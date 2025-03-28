@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mywebapp
+  name: {{ .Values.appName }}
   namespace: default
   labels:
-    app: mywebapp
+    app: {{ .Values.appName }}
 spec:
   ports:
   - port: 80
     protocol: TCP
     name: flask
   selector:
-    app: mywebapp
+    app: {{ .Values.appName }}
     tier: frontend
   type: NodePort
