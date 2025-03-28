@@ -16,15 +16,16 @@ spec:
       labels:
         app: {{ .Values.appName }}
         tier: frontend
-    spec: # Pod spec
+    spec:
       containers:
       - name: mycontainer
-        image: timor1/portfolio-app:1.0
+        image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        imagePullPolicy: Always # הגדרת Pull Policy
         ports:
         - containerPort: 80
         envFrom:
         - configMapRef:
-            name: myconfigmapv1.0
+            name: {{ .Values.configmap.name }}
         resources:
           requests:
             memory: "16Mi" 
