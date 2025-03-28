@@ -2,7 +2,7 @@ kind: ConfigMap
 apiVersion: v1 
 metadata:
   name: myconfigmapv1.0
-  namespace: default
+  namespace: {{ .Values.namespace }}
 data:
   BG_COLOR: '#12181b'
   FONT_COLOR: '#FFFFFF'
